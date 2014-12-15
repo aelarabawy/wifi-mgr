@@ -10,7 +10,7 @@
 
 #include <gio/gio.h>
 
-#include "../client/wpa_supplicant_client_common.h"
+#include "wpa_supplicant_common.h"
 #include "logger.h"
 
 #define SYNC_API 1
