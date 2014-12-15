@@ -67,7 +67,7 @@ void wpa_supplicant_client_bss_Start (wpa_supplicant_client_bss *bss) {
 	return;
 }
 
-void wpa_supplicant_dbusClient_bss_Stop (wpa_supplicant_client_bss *bss) {
+void wpa_supplicant_client_bss_Stop (wpa_supplicant_client_bss *bss) {
 	ENTER();
 
 	if (!bss){

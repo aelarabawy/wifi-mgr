@@ -90,9 +90,9 @@ void wpa_supplicant_client_bssMgr_AddBss(wpa_supplicant_client_bssMgr *mgr, char
     memset(bssRec, 0, sizeof(bssList));
 
     //Now initializing the BSS
-    bssRec->m_bss = (wpa_supplicant_client_bss *)wpa_supplicant_client_bss_Init(mgr->m_busName,
-    		                                                                    pathName,
-									 			                                mgr->m_dbusConnection);
+    bssRec->m_bss = wpa_supplicant_client_bss_Init(mgr->m_busName,
+    		                                   pathName,
+						   mgr->m_dbusConnection);
     if (!bssRec->m_bss) {
     	ERROR("Failed to initialize the BSS Record .. exit");
     	EXIT_WITH_ERROR();
@@ -100,7 +100,7 @@ void wpa_supplicant_client_bssMgr_AddBss(wpa_supplicant_client_bssMgr *mgr, char
     }
 
     //Now starting the BSS
-    wpa_supplicant_client_bss_Start((void *)bssRec->m_bss);
+    wpa_supplicant_client_bss_Start(bssRec->m_bss);
 
     EXIT();
 	return;
@@ -113,7 +113,7 @@ void wpa_supplicant_client_bssMgr_RemBss(wpa_supplicant_client_bssMgr *mgr, char
 	bssList *prevRec = NULL;
 
 	while (bssRec) {
-		if (!strcmp (wpa_supplicant_client_bss_GetPathName((void *)bssRec->m_bss), pathName)) {
+		if (!strcmp (wpa_supplicant_client_bss_GetPathName(bssRec->m_bss), pathName)) {
 			//Found the bss to delete
 			break;
 		}
@@ -128,10 +128,10 @@ void wpa_supplicant_client_bssMgr_RemBss(wpa_supplicant_client_bssMgr *mgr, char
 	}
 
 	//First Stop the BSS
-	wpa_supplicant_client_bss_Stop((void *)bssRec->m_bss);
+	wpa_supplicant_client_bss_Stop(bssRec->m_bss);
 
 	//Then Destroy the BSS
-	wpa_supplicant_client_bss_Destroy((void *)bssRec->m_bss);
+	wpa_supplicant_client_bss_Destroy(bssRec->m_bss);
 
 	//Then remove the bssRec from the list
 	if (!prevRec) {

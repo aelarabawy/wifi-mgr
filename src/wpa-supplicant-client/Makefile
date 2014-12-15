@@ -32,13 +32,14 @@ SRC= wpa_supplicant_client.c     \
      wpa_supplicant_client_bss_mgr.c \
      wpa_supplicant_client_bss.c \
      wpa_supplicant_client_network_mgr.c \
-     wpa_supplicant_client_network.c
+     wpa_supplicant_client_network.c  \
+     wpa_supplicant_mgr_api.c
  	 
 PUB_INC= wpa_supplicant_client.h \
          wpa_supplicant_client_iface.h \
          wpa_supplicant_client_bss.h \
- 	 wpa_supplicant_client_network.h \
- 	 wpa_supplicant_client_common.h	      
+ 	 	 wpa_supplicant_client_network.h \
+		 wpa_supplicant_client_common.h	      
 
 
 
